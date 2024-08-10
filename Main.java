@@ -1,10 +1,12 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class Main extends JFrame
 {
     //Declaration of UI's
-    //JButton addExerciseButton;
+    JButton addExerciseButton;
+    JLabel A, myExercisesLabel; 
     public static void main(String args[]) throws Exception
     {
         //initial GUI set up 
@@ -23,17 +25,22 @@ public class Main extends JFrame
         Container pane = this.getContentPane();
 
         JPanel topLeft = new JPanel();
-        topLeft.setBounds(0,0,250,250);
+        topLeft.setBounds(0,0,375,275);
+        topLeft.setBackground(Color.green);
 
         JPanel topRight = new JPanel();
-        topRight.setBounds(251,0,250,250);
+        topRight.setBounds(375,0,375,275);
+        topRight.setBackground(Color.cyan);
+
         
         JPanel bottomLeft = new JPanel();
-        bottomLeft.setBounds(0,251,250,250);
+        bottomLeft.setBounds(0,275,375,275);
+        bottomLeft.setBackground(Color.red);
+
 
         JPanel bottomRight = new JPanel();
-        bottomRight.setBounds(251,251,250,250);
-        bottomRight.setBackground(Color.black);
+        bottomRight.setBounds(375,275,375,275);
+        bottomRight.setBackground(Color.blue);
 
         pane.add(topLeft);
         pane.add(topRight);
@@ -52,5 +59,22 @@ public class Main extends JFrame
         JButton addExerciseButton = new JButton("Some random text");
         topRight.add(addExerciseButton);
         
+
+        //action listeners
+        event e = new event();
+        addExerciseButton.addActionListener(e);
+        
+    }
+    public class event implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            String stringg = "this is a string";
+            String option = e.getActionCommand();
+            if (option.equals("Some random text"))
+            {
+                addExerciseButton.setText(stringg);
+            }
+        }
     }
 }
