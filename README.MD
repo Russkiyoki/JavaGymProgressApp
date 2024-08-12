@@ -14,6 +14,8 @@ Additional cookie features:
 - graphs
 - Workout programs
 
-Currently what to add:
-    - Font to LabelA in topLeftPanel
-    - Container to hold current exercises that are Buttons to add the exercise
+Goals for 8.12.24:
+    - Create a scrollable panel in top left X
+    - Make addButton pretty X?
+    - Brain storm button adding process
+    - spend time finding icons and resources

@@ -3,7 +3,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class Main {
-  Font myFont = new Font("Times New Romans", Font.BOLD, 18);
+  static Font myFont = new Font("Times New Romans", Font.BOLD, 18);
 
   public static void main(String[] args) { 
     //random essentials
@@ -35,10 +35,18 @@ public class Main {
     panel.add(BL);
     panel.add(BR);
 
+    frame.revalidate();
+    frame.repaint();
+    panel.revalidate();
+    panel.repaint();
+    TL.revalidate();
+    TL.repaint();
+
   }
 
   private static JPanel createPanel()
   {
+    //BackGround Panel
     JPanel p = new JPanel(null);
     p.setBounds(0,0,1000,750);
     p.setBackground(new Color(45,45,50));
@@ -53,13 +61,18 @@ public class Main {
     JLayeredPane layeredPaneTopLeft = new JLayeredPane();
     layeredPaneTopLeft.setBounds(0,0,pW/2,pH/2);
     layeredPaneTopLeft.setBorder(new LineBorder(Color.red));
-    JPanel innerJPanel = createSmallPanel();
+    JScrollPane innerJScrollPanel = createJScrollPaneTL();
 
-    JLabel labelA = new JLabel("Tello");
-    labelA.setBounds(0,0,20,60);
+    JPanel innerJPanel = createsmallJPanel();
+    innerJScrollPanel.setViewportView(innerJPanel);
+
+    JLabel labelA = new JLabel("My Exercises");
+    labelA.setFont(myFont);
+    labelA.setBounds(40,0,120,30);
     layeredPaneTopLeft.add(labelA);
+    labelA.setForeground(Color.white);
 
-    layeredPaneTopLeft.add(innerJPanel);
+    layeredPaneTopLeft.add(innerJScrollPanel);
     return layeredPaneTopLeft;
   }
 
@@ -92,6 +105,10 @@ public class Main {
 
     JButton addButton = new JButton("add");
     addButton.setBounds(422, 322, 60,20);
+    addButton.setBackground(new Color(35,35,35));
+    addButton.setForeground(new Color(206, 130, 47));
+    addButton.setBorder(BorderFactory.createEmptyBorder());
+    addButton.setFocusPainted(false);
     addButton.setActionCommand("addButton Command");
     addButton.addActionListener(new MyActionListener());
 
@@ -100,7 +117,14 @@ public class Main {
     return layeredPaneBottomRight;
   }
 
-  private static JPanel createSmallPanel()
+  private static JScrollPane createJScrollPaneTL()
+  {
+    JScrollPane p = new JScrollPane();
+    p.setBounds(30,30,432,295);
+    p.setBorder(BorderFactory.createEmptyBorder());
+    return p;
+  }
+  private static JPanel createsmallJPanel()
   {
     JPanel p = new JPanel();
     p.setBounds(30,30,432,295);
