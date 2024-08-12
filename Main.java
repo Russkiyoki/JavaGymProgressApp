@@ -3,7 +3,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class Main {
-
+  Font myFont = new Font("Times New Romans", Font.BOLD, 18);
 
   public static void main(String[] args) { 
     //random essentials
@@ -53,7 +53,13 @@ public class Main {
     JLayeredPane layeredPaneTopLeft = new JLayeredPane();
     layeredPaneTopLeft.setBounds(0,0,pW/2,pH/2);
     layeredPaneTopLeft.setBorder(new LineBorder(Color.red));
+    JPanel innerJPanel = createSmallPanel();
 
+    JLabel labelA = new JLabel("Tello");
+    labelA.setBounds(0,0,20,60);
+    layeredPaneTopLeft.add(labelA);
+
+    layeredPaneTopLeft.add(innerJPanel);
     return layeredPaneTopLeft;
   }
 
@@ -77,10 +83,29 @@ public class Main {
 
   private static JLayeredPane createJLayeredPaneBottomRight(int pW, int pH)
   {
+    // pW/2 = 492
+    // pH/2 = 355
     JLayeredPane layeredPaneBottomRight = new JLayeredPane();
     layeredPaneBottomRight.setBounds(pW/2 ,pH/2,pW/2 ,pH/2);
     layeredPaneBottomRight.setBorder(new LineBorder(Color.green));
 
+
+    JButton addButton = new JButton("add");
+    addButton.setBounds(422, 322, 60,20);
+    addButton.setActionCommand("addButton Command");
+    addButton.addActionListener(new MyActionListener());
+
+
+    layeredPaneBottomRight.add(addButton);
     return layeredPaneBottomRight;
+  }
+
+  private static JPanel createSmallPanel()
+  {
+    JPanel p = new JPanel();
+    p.setBounds(30,30,432,295);
+    p.setBackground(new Color(35,35,35));
+    p.setBorder(new LineBorder(new Color(206, 130, 47)));
+    return p;
   }
 }

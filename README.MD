@@ -15,5 +15,5 @@ Additional cookie features:
 - Workout programs
 
 Currently what to add:
-    - Button to add exercise
+    - Font to LabelA in topLeftPanel
     - Container to hold current exercises that are Buttons to add the exercise
