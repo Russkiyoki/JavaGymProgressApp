@@ -14,8 +14,10 @@ Additional cookie features:
 - graphs
 - Workout programs
 
-Goals for 8.12.24:
-    - Create a scrollable panel in top left X
-    - Make addButton pretty X?
-    - Brain storm button adding process
+Goals for 8.13.24:
+    - Finish Button Adding Process
+    - Make scroller pretty
+    - Crank scroller speed
+    - Make buttons pretty
     - spend time finding icons and resources
+    

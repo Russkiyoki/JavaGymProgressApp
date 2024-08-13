@@ -4,7 +4,7 @@ import javax.swing.border.LineBorder;
 
 public class Main {
   static Font myFont = new Font("Times New Romans", Font.BOLD, 18);
-
+  private static JPanel innerJPanel;
   public static void main(String[] args) { 
     //random essentials
     //Load up from base to top layer order
@@ -63,7 +63,7 @@ public class Main {
     layeredPaneTopLeft.setBorder(new LineBorder(Color.red));
     JScrollPane innerJScrollPanel = createJScrollPaneTL();
 
-    JPanel innerJPanel = createsmallJPanel();
+    innerJPanel = createsmallJPanel();
     innerJScrollPanel.setViewportView(innerJPanel);
 
     JLabel labelA = new JLabel("My Exercises");
@@ -102,6 +102,10 @@ public class Main {
     layeredPaneBottomRight.setBounds(pW/2 ,pH/2,pW/2 ,pH/2);
     layeredPaneBottomRight.setBorder(new LineBorder(Color.green));
 
+    JPanel panel = new JPanel();
+    panel.setBounds(30,30,100,100);
+    panel.setBackground(Color.orange);
+
 
     JButton addButton = new JButton("add");
     addButton.setBounds(422, 322, 60,20);
@@ -109,27 +113,39 @@ public class Main {
     addButton.setForeground(new Color(206, 130, 47));
     addButton.setBorder(BorderFactory.createEmptyBorder());
     addButton.setFocusPainted(false);
+
     addButton.setActionCommand("addButton Command");
-    addButton.addActionListener(new MyActionListener());
+    addButton.addActionListener(new MyActionListener(innerJPanel));
 
-
+    layeredPaneBottomRight.add(panel);
     layeredPaneBottomRight.add(addButton);
     return layeredPaneBottomRight;
   }
 
   private static JScrollPane createJScrollPaneTL()
   {
+    //height = 295
     JScrollPane p = new JScrollPane();
     p.setBounds(30,30,432,295);
-    p.setBorder(BorderFactory.createEmptyBorder());
+    p.setBorder(new LineBorder(new Color(206, 130, 47)));
+    // p.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+    p.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+    p.getVerticalScrollBar().setUI(new CustomScrollBarUI());
+    p.getHorizontalScrollBar().setUI(new CustomScrollBarUI());
+
     return p;
   }
   private static JPanel createsmallJPanel()
   {
-    JPanel p = new JPanel();
-    p.setBounds(30,30,432,295);
+    // 432p x 295p
+    // min: 300p x 300p probably
+    JPanel p = new JPanel(null);
+    p.setPreferredSize(new Dimension(450,1000));
+    p.setBounds(30,30,450,1000);
     p.setBackground(new Color(35,35,35));
-    p.setBorder(new LineBorder(new Color(206, 130, 47)));
+    // p.setBorder(new LineBorder(new Color(206, 130, 47)));
     return p;
   }
+
 }
