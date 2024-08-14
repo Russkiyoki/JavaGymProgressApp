@@ -8,8 +8,8 @@ public class CustomScrollBarUI extends BasicScrollBarUI
     @Override
     protected void configureScrollBarColors() 
     {
-        this.thumbColor = Color.BLUE;
-        this.trackColor = Color.LIGHT_GRAY;
+        this.thumbColor = new Color(178, 111, 38);
+        this.trackColor = new Color(45,45,50);
     }
 
     @Override
@@ -58,8 +58,5 @@ public class CustomScrollBarUI extends BasicScrollBarUI
         g.translate(-thumbBounds.x, -thumbBounds.y);
     }
 
-    protected void setUnitIncrement()
-    {
-        
-    }
+
 }

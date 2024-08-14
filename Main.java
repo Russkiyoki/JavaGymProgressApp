@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+
 public class Main {
   static Font myFont = new Font("Times New Romans", Font.BOLD, 18);
   private static JPanel innerJPanel;
@@ -129,11 +130,14 @@ public class Main {
     JScrollPane p = new JScrollPane();
     p.setBounds(30,30,432,295);
     p.setBorder(new LineBorder(new Color(206, 130, 47)));
-    // p.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     p.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
+    
     p.getVerticalScrollBar().setUI(new CustomScrollBarUI());
     p.getHorizontalScrollBar().setUI(new CustomScrollBarUI());
+
+    JScrollBar verticalScrollBar = p.getVerticalScrollBar();
+    verticalScrollBar.setUnitIncrement(16);  // Set the scroll speed (16 pixels per scroll)
+    verticalScrollBar.setBlockIncrement(50);
 
     return p;
   }
