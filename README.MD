@@ -15,9 +15,8 @@ Additional cookie features:
 - Workout programs
 
 Goals for 8.13.24:
-    - Finish Button Adding Process
-    - Make scroller pretty
+    - do the Custom Exercise Button file
     - Crank scroller speed
-    - Make buttons pretty
+    - Make scroller pretty
     - spend time finding icons and resources
     

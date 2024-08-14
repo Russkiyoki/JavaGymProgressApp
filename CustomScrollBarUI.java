@@ -57,4 +57,9 @@ public class CustomScrollBarUI extends BasicScrollBarUI
         g.drawRect(0, 0, w - 1, h - 1);
         g.translate(-thumbBounds.x, -thumbBounds.y);
     }
+
+    protected void setUnitIncrement()
+    {
+        
+    }
 }
