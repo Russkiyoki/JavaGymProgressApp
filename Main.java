@@ -114,6 +114,7 @@ public class Main {
     addButton.setBorder(BorderFactory.createEmptyBorder());
     addButton.setFocusPainted(false);
 
+    //add button to inner panel
     addButton.setActionCommand("addButton Command");
     addButton.addActionListener(new MyActionListener(innerJPanel));
 
