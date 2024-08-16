@@ -33,8 +33,11 @@ public class CustomExerciseButton extends JPanel
         editButton.setSize(40,40);
         editButton.setActionCommand("edit " + count);
         editButton.addActionListener(new MyActionListener());
-        // editButton.setBackground;
-
+        // editButton.setBackground();
+        editButton.setOpaque(true);
+        editButton.setBorderPainted(false);
+        editButton.setContentAreaFilled(false);
+        editButton.setVisible(true);
         editButton.setIcon(new ImageIcon("edit.png"));
 
         buttonHolder.add(editButton, JLayeredPane.PALETTE_LAYER);
