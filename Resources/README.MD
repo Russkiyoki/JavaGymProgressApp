@@ -15,6 +15,5 @@ Additional cookie features:
 - Workout programs
 
 Goals for 8.13.24:
-    - spend time finding icons and resources
     - make a pop-up window that edits the ExerciseButton.text and creates it
-    
+    - create folder to split exercises for organization.

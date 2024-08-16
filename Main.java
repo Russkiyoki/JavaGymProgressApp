@@ -2,7 +2,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-
 public class Main {
   static Font myFont = new Font("Times New Romans", Font.BOLD, 18);
   private static JPanel innerJPanel;
@@ -14,6 +13,7 @@ public class Main {
     frame.setSize(new Dimension(1000, 750));
     frame.setLayout(null);
     frame.setVisible(true);
+    frame.setLocationRelativeTo(null);
     frame.setResizable(false);
 
     Insets insets = frame.getInsets();

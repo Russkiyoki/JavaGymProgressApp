@@ -1,3 +1,4 @@
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -14,9 +15,10 @@ public class MyActionListener implements ActionListener
         String option = e.getActionCommand();
         if (option.equals("addButton Command"))
         {
-            CustomExerciseButton customButton = new CustomExerciseButton();
-            JLayeredPane pp = customButton.getButtonHolder();
-            asd(p,pp);
+            // CustomExerciseButton customButton = new CustomExerciseButton();
+            // JLayeredPane pp = customButton.getButtonHolder();
+            // asd(p,pp);
+            AddExercisePopUp popUp = new AddExercisePopUp();
         }
         switch(option)
         {
