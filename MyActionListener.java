@@ -6,7 +6,7 @@ import javax.swing.*;
 public class MyActionListener implements ActionListener
 {
     private JPanel p;
-    private int count = -1;
+    private static int count = -1;
 
     //constructors
     public MyActionListener(JPanel p)
@@ -22,10 +22,12 @@ public class MyActionListener implements ActionListener
     {
         // Your action code here
         String option = e.getActionCommand();
+        mainButtonSetText(option);
         if (option.equals("addButton Command"))
         {
             AddExercisePopUp popUp = new AddExercisePopUp();
         }
+        
         // Exercise Button Actions
         switch(option)
         {
@@ -43,6 +45,7 @@ public class MyActionListener implements ActionListener
                 System.out.println("Edit 0 pressed!");
                 break;
         }
+
         switch(option)
         {
             case "eb Command":
@@ -50,6 +53,7 @@ public class MyActionListener implements ActionListener
                 CustomExerciseButton customButton = new CustomExerciseButton();
                 JLayeredPane pp = customButton.getButtonHolder();
                 asd(p,pp);
+                AddExercisePopUp.popUp.dispose();
                 break;
             case "fb Command":
                 System.out.println("fb pressed!");
@@ -69,5 +73,25 @@ public class MyActionListener implements ActionListener
         return pp;
 
     }
+    private static void mainButtonSetText(String o)
+    {
+        for(int i = 0; i <=15; i++)
+        {   
+            if (o.equals("edit " + i))
+            {
+                // CustomExerciseButton.mainButtons[i].setText("asd");
+                EditExercisePopUp editClass = new EditExercisePopUp();
+                // if(o.equals("cb Command"))
+                // {
+                //     String uT = editClass.updatedText;
+                //     CustomExerciseButton.mainButtons[i].setText(uT);
+                // }
+                editClass.getTextString();
+                
+
+            }
+        }
+    }
+
     
 }

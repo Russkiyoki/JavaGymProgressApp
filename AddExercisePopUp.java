@@ -9,10 +9,12 @@ public class AddExercisePopUp
     private static int panelWidth;
     private static int panelHeight;
     private static Main m = new Main();
+    public static JTextField textField;
+    public static JFrame popUp;
+
     public AddExercisePopUp()
     {
-        JFrame popUp = new JFrame("Pop up");
-        // popUp.setBounds(400,400,100,100);
+        popUp = new JFrame("Pop up");
         popUp.setSize(400,200);
         popUp.setLocationRelativeTo(null);
         popUp.setResizable(false);
@@ -21,7 +23,7 @@ public class AddExercisePopUp
         width = popUp.getWidth();
 
         JPanel backGroundPanel = backgroundJPanel();
-        JTextField textField = nameTextField(backGroundPanel);
+        textField = nameTextField(backGroundPanel);
         JButton folderButton = folderJButton();
         JButton exerciseButton = exerciseJButton();
 
@@ -32,34 +34,36 @@ public class AddExercisePopUp
         popUp.setVisible(true);
 
     }
-    public JPanel backgroundJPanel()
+    private JPanel backgroundJPanel()
     {
         JPanel bg = new JPanel(null);
         bg.setBounds(0,0,width,height);
         bg.setBackground(new Color(35,35,35));
         return bg;
     }
-    public JTextField nameTextField(JPanel p)
+    private JTextField nameTextField(JPanel p)
     {
         insets = p.getInsets();
         panelWidth = width - insets.left - insets.right;
         panelHeight = height - insets.top - insets.bottom;
 
         int tfWidth = (int) (panelWidth * 0.75);
-        // System.out.println(panelWidth - );
+
         JTextField tf = new JTextField(null);
         tf.setFont(m.myFont);
         tf.setSize(tfWidth,40);
         // mess around to find the 7 LOL
         tf.setLocation((width - tfWidth)/2 -7, panelHeight /2 - 40);
 
-
-        //add Exercise button
-        //add Folder button
-
         return tf;
     }
-    public JButton folderJButton()
+
+    public String getTextString()
+    {
+        return textField.getText();
+    }
+
+    private JButton folderJButton()
     {
         JButton fb = new JButton("Create Folder");
         int bW = panelWidth / 2;
@@ -77,7 +81,7 @@ public class AddExercisePopUp
         return fb;
 
     }
-    public JButton exerciseJButton()
+    private JButton exerciseJButton()
     {
         JButton eb = new JButton("Create Exercise");
         int bW = panelWidth / 2;

@@ -1,5 +1,4 @@
-
-import java.awt.Color;
+import java.awt.*;
 import javax.swing.*;
 
 public class CustomExerciseButton extends JPanel
@@ -7,29 +6,29 @@ public class CustomExerciseButton extends JPanel
     private JButton mainButton;
     private JButton editButton;
     private JLayeredPane buttonHolder;
-    private static int count = -1;
+    public static JButton[] mainButtons = new JButton[15];
 
-    //count not working because it is getting redifined each time class is called in MyActionListener
+    private static int count = -1;
 
     public CustomExerciseButton()
     {
         count++;
-        System.out.println("customExercise accessed");
-        System.out.println(count);
-
+        // setButtonHolder();
+        setEditButton();
+        setMainButton();
         buttonHolder = new JLayeredPane();
-        // buttonHolder.setBounds(5,(count * 40) + 5,200,40);
         buttonHolder.setBackground(Color.orange);
+        buttonHolder.add(editButton, JLayeredPane.PALETTE_LAYER);
+        buttonHolder.add(mainButton, JLayeredPane.DEFAULT_LAYER);
+    }
+    // private void setButtonHolder()
+    // {
 
-        mainButton = new JButton("Button pp" + count);
-        // mainButton.setBounds(5,(count * 40),200,40);
-        mainButton.setSize(400,40);
-        mainButton.setActionCommand("Button " + count);
-        mainButton.addActionListener(new MyActionListener());
-        mainButton.setBackground(new Color(206, 130, 47));
-        
+    // }
+    private void setEditButton()
+    {
         editButton = new JButton();
-        // editButton.setBounds(160,(count * 40),40,40);
+        editButton.setLayout(null);
         editButton.setSize(40,40);
         editButton.setActionCommand("edit " + count);
         editButton.addActionListener(new MyActionListener());
@@ -38,11 +37,23 @@ public class CustomExerciseButton extends JPanel
         editButton.setBorderPainted(false);
         editButton.setContentAreaFilled(false);
         editButton.setVisible(true);
-        editButton.setIcon(new ImageIcon("edit.png"));
-
-        buttonHolder.add(editButton, JLayeredPane.PALETTE_LAYER);
-        buttonHolder.add(mainButton, JLayeredPane.DEFAULT_LAYER);
+        editButton.setMargin(new Insets(0,0,0,0));
+        editButton.setIcon(new ImageIcon("editMed.png"));
+        //if in resources folder, then access using FULL file path ex: "Resources\editMed.png"
+        editButton.setFocusable(false);
+    }
+    private void setMainButton()
+    {
+        String text = AddExercisePopUp.textField.getText();
+        mainButton = new JButton("Button " + count);
+        mainButton.setText(text);
         
+        mainButton.setSize(400,40);
+        mainButton.setActionCommand("Button " + count);
+        mainButton.addActionListener(new MyActionListener());
+        mainButton.setBackground(new Color(206, 130, 47));
+        mainButton.setFocusable(false);
+        mainButtons[count] = mainButton;
     }
 
     public JButton getMainButton()
