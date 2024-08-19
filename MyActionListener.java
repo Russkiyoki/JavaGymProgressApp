@@ -7,6 +7,7 @@ public class MyActionListener implements ActionListener
 {
     private JPanel p;
     private static int count = -1;
+    private static int whichEdit;
 
     //constructors
     public MyActionListener(JPanel p)
@@ -23,6 +24,8 @@ public class MyActionListener implements ActionListener
         // Your action code here
         String option = e.getActionCommand();
         mainButtonSetText(option);
+        editConfirmButtonClick(option);
+        deleteButtonClick(option);
         if (option.equals("addButton Command"))
         {
             AddExercisePopUp popUp = new AddExercisePopUp();
@@ -81,17 +84,37 @@ public class MyActionListener implements ActionListener
             {
                 // CustomExerciseButton.mainButtons[i].setText("asd");
                 EditExercisePopUp editClass = new EditExercisePopUp();
-                // if(o.equals("cb Command"))
-                // {
-                //     String uT = editClass.updatedText;
-                //     CustomExerciseButton.mainButtons[i].setText(uT);
-                // }
-                editClass.getTextString();
-                
+
+                // editClass.getTextString();
+                whichEdit = i;
+                System.out.println(whichEdit);
 
             }
         }
     }
+    private void editConfirmButtonClick(String o)
+    {
+        if(o.equals("cb Command"))
+        {
+            System.out.println("cb pressed!");
+            String updatedText = EditExercisePopUp.textField.getText(); 
+            // System.out.println(whichEdit);
+            CustomExerciseButton.mainButtons[whichEdit].setText(updatedText);
+            EditExercisePopUp.editPopUp.dispose();
+
+        }
+    }
+private void deleteButtonClick(String o)
+{
+    for (int i = 0; i <= 15; i++)
+    {
+        if (o.equals("delete " + i))
+        {
+            System.out.println(CustomExerciseButton.mainButtons[i]);
+            // CustomExerciseButton.buttonHolder.setVisible(false);
+        }
+    }
+}
 
     
 }

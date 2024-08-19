@@ -1,12 +1,17 @@
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 public class CustomExerciseButton extends JPanel
 {
     private JButton mainButton;
     private JButton editButton;
+    private JButton deleteButton;
     private JLayeredPane buttonHolder;
     public static JButton[] mainButtons = new JButton[15];
+    public static List<JButton> mainButtonsList = new ArrayList<>();
+
 
     private static int count = -1;
 
@@ -16,15 +21,19 @@ public class CustomExerciseButton extends JPanel
         // setButtonHolder();
         setEditButton();
         setMainButton();
+        setDeleteButton();
         buttonHolder = new JLayeredPane();
         buttonHolder.setBackground(Color.orange);
         buttonHolder.add(editButton, JLayeredPane.PALETTE_LAYER);
-        buttonHolder.add(mainButton, JLayeredPane.DEFAULT_LAYER);
+        buttonHolder.add(deleteButton,JLayeredPane.DEFAULT_LAYER);
+        //change for ButtonHolder to add mainButton out of the array
+        buttonHolder.add(mainButtons[count], JLayeredPane.DEFAULT_LAYER);
     }
-    // private void setButtonHolder()
+    // public setButtonHolderVisibility()
     // {
-
+    //     return buttonHolder.setVisible(buttonHolder.setVisible()); 
     // }
+
     private void setEditButton()
     {
         editButton = new JButton();
@@ -54,6 +63,23 @@ public class CustomExerciseButton extends JPanel
         mainButton.setBackground(new Color(206, 130, 47));
         mainButton.setFocusable(false);
         mainButtons[count] = mainButton;
+    }
+    private void setDeleteButton()
+    {
+        deleteButton = new JButton();
+        deleteButton.setLayout(null);
+        deleteButton.setSize(40,40);
+        deleteButton.setLocation(40,0);
+        deleteButton.setActionCommand("delete " + count);
+        deleteButton.addActionListener(new MyActionListener());
+        deleteButton.setOpaque(true);
+        deleteButton.setBorderPainted(false);
+        deleteButton.setContentAreaFilled(false);
+        deleteButton.setVisible(true);
+        deleteButton.setMargin(new Insets(0,0,0,0));
+        deleteButton.setFocusable(false);
+        deleteButton.setIcon(new ImageIcon("garbage.png"));
+
     }
 
     public JButton getMainButton()

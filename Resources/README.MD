@@ -15,5 +15,11 @@ Additional cookie features:
 - Workout programs
 
 Goals for 8.17.24:
-    - create functional edit function
+    - create functional edit function X
+    - create delete function for Main buttons
     - create folder to split exercises for organization.
+
+what i did with checklist:
+Create Buttons. 
+On Button Click, trigger visibility. 
+On new button creating, loop to find first invisible button, add new button info into that slot. 

@@ -9,12 +9,11 @@ public class EditExercisePopUp
     private static int panelHeight;
     private static Main m = new Main();
     public static JTextField textField;
-    public static String updatedText;
-    public static JFrame popUp;
+    public static JFrame editPopUp;
     //Initilization / constructor
     public EditExercisePopUp()
     {
-        JFrame editPopUp = new JFrame();
+        editPopUp = new JFrame();
         editPopUp.setSize(400,200);
         editPopUp.setLocationRelativeTo(null);
         editPopUp.setResizable(false);
