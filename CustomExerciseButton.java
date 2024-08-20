@@ -8,16 +8,17 @@ public class CustomExerciseButton extends JPanel
     private JButton mainButton;
     private JButton editButton;
     private JButton deleteButton;
-    private JLayeredPane buttonHolder;
-    public static JButton[] mainButtons = new JButton[15];
+    private static JLayeredPane buttonHolder;
+    // we wont be using mainButtons array. We will use mainButtonsList instead
+    // public static JButton[] mainButtons = new JButton[15];
     public static List<JButton> mainButtonsList = new ArrayList<>();
-
-
+    public static List<JLayeredPane> buttonHolderList = new ArrayList<>();
     private static int count = -1;
-
+    public static int id = -1;
     public CustomExerciseButton()
     {
         count++;
+        id++;
         // setButtonHolder();
         setEditButton();
         setMainButton();
@@ -26,13 +27,21 @@ public class CustomExerciseButton extends JPanel
         buttonHolder.setBackground(Color.orange);
         buttonHolder.add(editButton, JLayeredPane.PALETTE_LAYER);
         buttonHolder.add(deleteButton,JLayeredPane.DEFAULT_LAYER);
-        //change for ButtonHolder to add mainButton out of the array
-        buttonHolder.add(mainButtons[count], JLayeredPane.DEFAULT_LAYER);
+        buttonHolder.add(mainButtonsList.get(count));
+        buttonHolderList.add(buttonHolder);
     }
-    // public setButtonHolderVisibility()
-    // {
-    //     return buttonHolder.setVisible(buttonHolder.setVisible()); 
-    // }
+    public void removeButtonHolder()
+    {   
+        count--;
+    }
+    public static int getButtonHolderID()
+    {
+        return id;
+    }
+    public static void setNewID(int newID)
+    {
+        id = newID;
+    }
 
     private void setEditButton()
     {
@@ -62,7 +71,7 @@ public class CustomExerciseButton extends JPanel
         mainButton.addActionListener(new MyActionListener());
         mainButton.setBackground(new Color(206, 130, 47));
         mainButton.setFocusable(false);
-        mainButtons[count] = mainButton;
+        mainButtonsList.add(mainButton);
     }
     private void setDeleteButton()
     {
@@ -83,15 +92,9 @@ public class CustomExerciseButton extends JPanel
     }
 
     public JButton getMainButton()
-    {
-        return mainButton;
-    }
+    {  return mainButton;  }
     public JButton getEditButton()
-    {
-        return editButton;
-    }
+    {  return editButton;  }
     public JLayeredPane getButtonHolder()
-    {
-        return buttonHolder;
-    }
+    {  return buttonHolder;   }
 }

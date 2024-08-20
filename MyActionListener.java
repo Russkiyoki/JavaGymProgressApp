@@ -5,7 +5,8 @@ import javax.swing.*;
 
 public class MyActionListener implements ActionListener
 {
-    private JPanel p;
+    private static JPanel p;
+    private JLayeredPane pp;
     private static int count = -1;
     private static int whichEdit;
 
@@ -13,6 +14,10 @@ public class MyActionListener implements ActionListener
     public MyActionListener(JPanel p)
     {
         this.p = p;
+    }
+    public MyActionListener(JLayeredPane pp)
+    {
+        this.pp = pp;
     }
     public MyActionListener()
     {
@@ -54,7 +59,7 @@ public class MyActionListener implements ActionListener
             case "eb Command":
                 // System.out.println("eb pressed!!!");
                 CustomExerciseButton customButton = new CustomExerciseButton();
-                JLayeredPane pp = customButton.getButtonHolder();
+                pp = customButton.getButtonHolder();
                 asd(p,pp);
                 AddExercisePopUp.popUp.dispose();
                 break;
@@ -98,21 +103,43 @@ public class MyActionListener implements ActionListener
         {
             System.out.println("cb pressed!");
             String updatedText = EditExercisePopUp.textField.getText(); 
-            // System.out.println(whichEdit);
-            CustomExerciseButton.mainButtons[whichEdit].setText(updatedText);
+            CustomExerciseButton.mainButtonsList.get(whichEdit).setText(updatedText);
             EditExercisePopUp.editPopUp.dispose();
 
         }
     }
 private void deleteButtonClick(String o)
 {
-    for (int i = 0; i <= 15; i++)
+    for (int i = 0; i < CustomExerciseButton.buttonHolderList.size(); i++)
     {
+        //only gets triggered if the deleteButton.ActionCommand is met
         if (o.equals("delete " + i))
         {
-            System.out.println(CustomExerciseButton.mainButtons[i]);
-            // CustomExerciseButton.buttonHolder.setVisible(false);
+        System.out.println("Current I: " +i);
+        CustomExerciseButton.buttonHolderList.remove(i);
+            for(int j =0; j < CustomExerciseButton.buttonHolderList.size();j++)
+            {
+                //if ID of buttonHolder is less than buttonHolders after
+                //then decrement value of ID of everything after
+                // System.out.println("ID:"+CustomExerciseButton.buttonHolderList.get(i).getButtonHolderID());
+                CustomExerciseButton.setNewID(i--);
+
+                if(i < CustomExerciseButton.buttonHolderList.size() )
+                {
+                    //grab ButtonHolderList[i].setNewID(id-1);
+                    JLayeredPane ourPane = CustomExerciseButton.buttonHolderList.get(i);
+                    //other positions aren't filled yet so they are null. 
+                    System.out.println("ID:"+CustomExerciseButton.getButtonHolderID());
+
+                }
+                
+            }
+            p.remove(i);
+            p.revalidate();
+            p.repaint();
         }
+
+
     }
 }
 
