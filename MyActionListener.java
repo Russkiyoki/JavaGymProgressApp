@@ -1,8 +1,6 @@
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
 public class MyActionListener implements ActionListener
 {
     private static JPanel p;
@@ -30,7 +28,12 @@ public class MyActionListener implements ActionListener
         String option = e.getActionCommand();
         mainButtonSetText(option);
         editConfirmButtonClick(option);
-        deleteButtonClick(option);
+        if(option.contains("delete "))
+        {
+            System.out.println("IF contains accessed");
+            deleteButtonClick(option);
+        }
+        // deleteButtonClick(option);
         if (option.equals("addButton Command"))
         {
             AddExercisePopUp popUp = new AddExercisePopUp();
@@ -110,30 +113,27 @@ public class MyActionListener implements ActionListener
     }
 private void deleteButtonClick(String o)
 {
+    //problem with the method is that when we delete the JLayeredPane from buttonHolderList,
+    //it alters the size therefore screwing us over by changing the index position of all the
+    //currently added ButtonHolders.
+    // Fix:
+    //possibly dupe the list after every click and then access that new list to delete?
+    // Fix 2:
+    // on delete.click check if i < everything after the click in order to move it
+    // fix 3:
+    // hashmap this mf
     for (int i = 0; i < CustomExerciseButton.buttonHolderList.size(); i++)
     {
         //only gets triggered if the deleteButton.ActionCommand is met
         if (o.equals("delete " + i))
         {
-        System.out.println("Current I: " +i);
-        CustomExerciseButton.buttonHolderList.remove(i);
-            for(int j =0; j < CustomExerciseButton.buttonHolderList.size();j++)
-            {
-                //if ID of buttonHolder is less than buttonHolders after
-                //then decrement value of ID of everything after
-                // System.out.println("ID:"+CustomExerciseButton.buttonHolderList.get(i).getButtonHolderID());
-                CustomExerciseButton.setNewID(i--);
+            System.out.println("Delete button pressed");
+            System.out.println("Current I: " +i);
+            System.out.println("customExercise.count = " + CustomExerciseButton.count);
 
-                if(i < CustomExerciseButton.buttonHolderList.size() )
-                {
-                    //grab ButtonHolderList[i].setNewID(id-1);
-                    JLayeredPane ourPane = CustomExerciseButton.buttonHolderList.get(i);
-                    //other positions aren't filled yet so they are null. 
-                    System.out.println("ID:"+CustomExerciseButton.getButtonHolderID());
+            
+            // CustomExerciseButton.buttonHolderList.remove(i);
 
-                }
-                
-            }
             p.remove(i);
             p.revalidate();
             p.repaint();

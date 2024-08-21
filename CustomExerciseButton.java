@@ -13,12 +13,12 @@ public class CustomExerciseButton extends JPanel
     // public static JButton[] mainButtons = new JButton[15];
     public static List<JButton> mainButtonsList = new ArrayList<>();
     public static List<JLayeredPane> buttonHolderList = new ArrayList<>();
-    private static int count = -1;
-    public static int id = -1;
+    
+    public static int count = 0;
+    public static int id = 0;
     public CustomExerciseButton()
     {
-        count++;
-        id++;
+
         // setButtonHolder();
         setEditButton();
         setMainButton();
@@ -29,6 +29,8 @@ public class CustomExerciseButton extends JPanel
         buttonHolder.add(deleteButton,JLayeredPane.DEFAULT_LAYER);
         buttonHolder.add(mainButtonsList.get(count));
         buttonHolderList.add(buttonHolder);
+        count++;
+        id++;
     }
     public void removeButtonHolder()
     {   

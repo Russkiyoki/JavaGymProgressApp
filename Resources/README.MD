@@ -14,8 +14,8 @@ Additional cookie features:
 - graphs
 - Workout programs
 
-Goals for 8.17.24:
-    - create functional edit function X
+Goals for 8.20.24:
+    - Recreate CustomExerciseButton.java to look like an actual object including a personal id per object created
     - create delete function for Main buttons
     - create folder to split exercises for organization.
 
