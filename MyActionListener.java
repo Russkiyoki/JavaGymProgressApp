@@ -9,6 +9,10 @@ public class MyActionListener implements ActionListener
     private static int whichEdit;
 
     //constructors
+    public MyActionListener()
+    {
+        //empty constructor
+    }
     public MyActionListener(JPanel p)
     {
         this.p = p;
@@ -17,10 +21,7 @@ public class MyActionListener implements ActionListener
     {
         this.pp = pp;
     }
-    public MyActionListener()
-    {
-        
-    }
+
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -28,11 +29,8 @@ public class MyActionListener implements ActionListener
         String option = e.getActionCommand();
         mainButtonSetText(option);
         editConfirmButtonClick(option);
-        if(option.contains("delete "))
-        {
-            System.out.println("IF contains accessed");
-            deleteButtonClick(option);
-        }
+        addExercisePopUpClicks(option);
+        if(option.contains("delete "))  {deleteButtonClick(option);}
         // deleteButtonClick(option);
         if (option.equals("addButton Command"))
         {
@@ -47,27 +45,6 @@ public class MyActionListener implements ActionListener
                 break;
             case "Button 1":
                 System.out.println("Button 1 pressed");
-                break;
-        }
-        // Exercise edit Button Actions
-        switch(option)
-        {
-            case "edit 0":
-                System.out.println("Edit 0 pressed!");
-                break;
-        }
-
-        switch(option)
-        {
-            case "eb Command":
-                // System.out.println("eb pressed!!!");
-                CustomExerciseButton customButton = new CustomExerciseButton();
-                pp = customButton.getButtonHolder();
-                asd(p,pp);
-                AddExercisePopUp.popUp.dispose();
-                break;
-            case "fb Command":
-                System.out.println("fb pressed!");
                 break;
         }
 
@@ -111,7 +88,7 @@ public class MyActionListener implements ActionListener
 
         }
     }
-private void deleteButtonClick(String o)
+    private void deleteButtonClick(String o)
 {
     //problem with the method is that when we delete the JLayeredPane from buttonHolderList,
     //it alters the size therefore screwing us over by changing the index position of all the
@@ -122,26 +99,70 @@ private void deleteButtonClick(String o)
     // on delete.click check if i < everything after the click in order to move it
     // fix 3:
     // hashmap this mf
+    // so we hashmap it, then instead of retrieving by int, we retrieve by mainButton.getText()
+    // then, we wouldnt have an index problem. we also have to make sure that N != null && !getText(others)
     for (int i = 0; i < CustomExerciseButton.buttonHolderList.size(); i++)
     {
         //only gets triggered if the deleteButton.ActionCommand is met
         if (o.equals("delete " + i))
         {
+            JButton ourButton = CustomExerciseButton.mainButtonsList.get(i);
+            String ourString = ourButton.getText();
             System.out.println("Delete button pressed");
             System.out.println("Current I: " +i);
-            System.out.println("customExercise.count = " + CustomExerciseButton.count);
-
+            // System.out.println("customExercise.count = " + CustomExerciseButton.count);
+            System.err.println(CustomExerciseButton.buttonHolderHashMap.size());
+            System.out.println(CustomExerciseButton.buttonHolderHashMap.get(ourString));
             
             // CustomExerciseButton.buttonHolderList.remove(i);
 
-            p.remove(i);
-            p.revalidate();
-            p.repaint();
+            // p.remove(i);
+            // p.revalidate();
+            // p.repaint();
         }
 
 
     }
 }
+    private void addExercisePopUpClicks(String o)
+    {
+        //eb = Exercise Button
+        if(o.equals("eb Command"))
+        {
 
+            if(!AddExercisePopUp.textField.getText().equals(""))
+            {
+                String textFieldText = AddExercisePopUp.textField.getText();
+                AddExercisePopUp.exerciseTextList.add(textFieldText);
+                for(int i = AddExercisePopUp.exerciseTextList.size()-1; i >0; i--)
+                {
+                    //if the current text is the same as a previous text dont add
+                    if(AddExercisePopUp.textField.getText().equals(AddExercisePopUp.exerciseTextList.get(i)))
+                    {
+                        System.out.println("Is the same text");
+                        return;
+    
+                    }
+                    return;
+                }
+                CustomExerciseButton customButton = new CustomExerciseButton();
+                pp = customButton.getButtonHolder();
+                asd(p,pp);
+                AddExercisePopUp.popUp.dispose();
+
+
+            }
+
+            // System.out.println(AddExercisePopUp.exerciseTextList.size()-1);
+
+
+
+
+        }
+        else if(o.equals("fb Command"))
+        {
+            System.out.println("fb Pressed!");
+        }
+    }
     
 }

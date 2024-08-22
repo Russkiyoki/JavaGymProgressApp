@@ -3,7 +3,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class Main {
-  static Font myFont = new Font("Times New Romans", Font.BOLD, 18);
+  public static Font myFont = new Font("Times New Romans", Font.BOLD, 18);
   static JPanel innerJPanel;
   public static void main(String[] args) { 
     //random essentials

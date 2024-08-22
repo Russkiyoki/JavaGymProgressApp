@@ -23,3 +23,6 @@ what i did with checklist:
 Create Buttons. 
 On Button Click, trigger visibility. 
 On new button creating, loop to find first invisible button, add new button info into that slot. 
+
+Current task:
+    - make it so that mainButton wont be added if it has the same text as another button within the list

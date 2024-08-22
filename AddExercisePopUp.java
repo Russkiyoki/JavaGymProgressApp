@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 public class AddExercisePopUp
@@ -11,6 +13,7 @@ public class AddExercisePopUp
     private static Main m = new Main();
     public static JTextField textField;
     public static JFrame popUp;
+    public static List<String> exerciseTextList = new ArrayList<>();
 
     public AddExercisePopUp()
     {
