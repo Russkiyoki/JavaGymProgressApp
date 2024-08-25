@@ -35,6 +35,7 @@ public class MyActionListener implements ActionListener
         if (option.equals("addButton Command"))
         {
             AddExercisePopUp popUp = new AddExercisePopUp();
+
         }
         
         // Exercise Button Actions
@@ -129,7 +130,6 @@ public class MyActionListener implements ActionListener
         //eb = Exercise Button
         if(o.equals("eb Command"))
         {
-
             if(!AddExercisePopUp.textField.getText().equals(""))
             {
                 String textFieldText = AddExercisePopUp.textField.getText();
@@ -139,18 +139,24 @@ public class MyActionListener implements ActionListener
                     //if the current text is the same as a previous text dont add
                     if(AddExercisePopUp.textField.getText().equals(AddExercisePopUp.exerciseTextList.get(i)))
                     {
-                        System.out.println("Is the same text");
+                        // System.out.println("Is the same text");
+                        AddExercisePopUp.textField.setText("");
+                        ErrorPopUp.errorMessage = "Exercise already exists!";
+                        ErrorPopUp err = new ErrorPopUp();
                         return;
     
                     }
-                    return;
                 }
                 CustomExerciseButton customButton = new CustomExerciseButton();
                 pp = customButton.getButtonHolder();
                 asd(p,pp);
                 AddExercisePopUp.popUp.dispose();
-
-
+            }
+            else
+            {
+                AddExercisePopUp.textField.setText("");
+                ErrorPopUp.errorMessage = "No exercise name detected!";
+                ErrorPopUp err = new ErrorPopUp();
             }
 
             // System.out.println(AddExercisePopUp.exerciseTextList.size()-1);
