@@ -9,21 +9,8 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "Local instance MySQL90",
-            "username": "root",
-            "database": "Aussiepoo"
-        },
-        {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 3306,
-            "driver": "MySQL",
-            "name": "Local instance MySQL90",
-            "database": "aussiepoo",
+            "name": "asd",
+            "database": "asddb",
             "username": "root"
         }
     ]
